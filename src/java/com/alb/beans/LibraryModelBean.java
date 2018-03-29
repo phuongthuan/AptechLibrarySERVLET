@@ -5,10 +5,27 @@
  */
 package com.alb.beans;
 
+import com.alb.da.*;
+import com.alb.entities.*;
+import java.util.*;
+
 /**
  *
  * @author PHUONGTHUAN
  */
 public class LibraryModelBean {
     
+    private String keyword;
+    
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+    
+    public List<Book> getBooks() {
+        return new BookDB().getAllBooks();
+    }
+    
+    public List<Book> getBooksByName() {
+        return new BookDB().getBooksByName(keyword);
+    }
 }

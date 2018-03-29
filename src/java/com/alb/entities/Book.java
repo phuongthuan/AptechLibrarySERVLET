@@ -20,8 +20,9 @@ public class Book {
     private Integer category_id;
     private Integer author_id;
     private Integer publisher_id;
+    private Integer status;
     
-
+    
     public Book() {
     }
 
@@ -34,14 +35,17 @@ public class Book {
      * @param category_id
      * @param author_id
      * @param publisher_id 
+     * @param status 
      */
-    public Book(Integer id, String name, String description, Integer category_id, Integer author_id, Integer publisher_id) {
+
+    public Book(Integer id, String name, String description, Integer category_id, Integer author_id, Integer publisher_id, Integer status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category_id = category_id;
         this.author_id = author_id;
         this.publisher_id = publisher_id;
+        this.status = status;
     }
 
     public Integer getId() {
@@ -92,8 +96,17 @@ public class Book {
         this.publisher_id = publisher_id;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", name=" + name + ", description=" + description + ", category_id=" + category_id + ", author_id=" + author_id + ", publisher_id=" + publisher_id + '}';
+        return "Book{" + "id=" + id + ", name=" + name + ", description=" + description + ", category_id=" + category_id + ", author_id=" + author_id + ", publisher_id=" + publisher_id + ", status=" + status + '}';
     }
+
 }
