@@ -28,7 +28,7 @@
                 <th>Option</th>
             </tr>
             <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="page"/>
-            <c:forEach items="${controller.books}" var="book" >
+            <c:forEach items="${controller.listBook}" var="book" >
                 <tr>
                     <td>${book.id}</td>
                     <td>${book.name}</td>
@@ -37,10 +37,24 @@
                     <td>${book.author_id}</td>
                     <td>${book.publisher_id}</td>
                     <td>${book.status}</td>
-                    <td><a style="text-decoration: none" href="deleteBook?id=${book.id}">Delete</a></td>
+                    <td>
+                        <form method="POST" action="DeleteBookController">
+                            <input type="submit" value="Delete">
+                            <input type="hidden" name="bookId" value="${book.id}">
+                        </form>
+                    </td>
+                    
+                    <td>
+                        <form method="POST" action="ReadBookController">
+                            <input type="submit" value="Detail">
+                            <input type="hidden" name="bookId" value="${book.id}">
+                        </form>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
-        <a style="color: blue" href="addbook.jsp">Add New Book</a>
+        <a style="color: blue" href="addnewbook.jsp">Add New Book</a>
     </body>
+    
+    
 </html>

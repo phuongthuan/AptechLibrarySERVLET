@@ -28,4 +28,16 @@ public class LibraryModelBean {
     public List<Book> getBooksByName() {
         return new BookDB().getBooksByName(keyword);
     }
+    
+    public List getBookDetails(Integer id) {
+        return new BookDB().getBookDetails(id);
+    }
+    
+    public List getListBook() {
+        return new BookDB().getListbooks();
+    }
+    
+    public void deleteBook(Integer id) {
+       new BookDB().deleteBook(id);
+    }
 }

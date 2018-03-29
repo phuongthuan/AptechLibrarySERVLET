@@ -45,6 +45,55 @@ public class BookDB {
         }
     }
     
+    public List getListbooks() {
+
+        try {
+            ps = getListBooksStatement();
+            ResultSet rs = ps.executeQuery();
+            List<String[]> listbooks = new ArrayList<>();
+            while (rs.next()) {
+                listbooks.add(new String[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6)
+                });
+
+            }
+            return listbooks;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    public List getBookDetails(int id) {
+        try {
+            ps = getBookDetailStatement();
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            List<String[]> bookdetails = new ArrayList<>();
+            while (rs.next()) {
+                bookdetails.add(new String[]{
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4),
+                    rs.getString(5),
+                    rs.getString(6),
+                    rs.getString(7)
+                });
+            }
+            return bookdetails;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     
     public List<Book> getBooksByName(String name) {
         try {
@@ -71,7 +120,32 @@ public class BookDB {
             return null;
         }
     }
+
+    public void deleteBook(Integer id) {
+        try {
+            ps = getDeleteBookStatement();
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+        
+    private PreparedStatement getBookDetailStatement() throws SQLException, ClassNotFoundException {
+        if (ps == null) {
+            Connection conn = new DBConnection().getConnection();
+            ps = conn.prepareStatement("SELECT b.id, c.name, b.name, b.description, a.name, p.name, b.status FROM books b INNER JOIN authors a ON b.author_id = a.id INNER JOIN publishers p ON b.publisher_id = p.id INNER JOIN categories c ON b.category_id = c.id WHERE b.id=?");
+        }
+        return ps;
+    }
     
+    private PreparedStatement getListBooksStatement() throws SQLException, ClassNotFoundException {
+        if (ps == null) {
+            Connection conn = new DBConnection().getConnection();
+            ps = conn.prepareStatement("SELECT b.id, c.name, b.name, b.description, a.name, p.name, b.status FROM books b INNER JOIN authors a ON b.author_id = a.id INNER JOIN publishers p ON b.publisher_id = p.id INNER JOIN categories c ON b.category_id = c.id");
+        }
+        return ps;
+    }
     
     private PreparedStatement getSearchStatement() throws ClassNotFoundException, SQLException {
         if (ps == null) {
@@ -89,6 +163,13 @@ public class BookDB {
         return ps;
     }
     
-    
+    private PreparedStatement getDeleteBookStatement() throws SQLException, ClassNotFoundException {
+        if (ps == null) {
+            Connection conn = new DBConnection().getConnection();
+            ps = conn.prepareStatement("DELETE FROM books WHERE id=?");
+        }
+        return ps;
+    }
+
     
 }
