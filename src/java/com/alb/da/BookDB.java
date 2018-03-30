@@ -17,25 +17,33 @@ import java.util.logging.Logger;
  */
 public class BookDB {
     
-//    public static void main(String[] args) {
+    public static void main(String[] args) {
 //        System.out.println(getBookById(1));
-////        Book b = new Book();
-////        b.setName("Change the world start off by making your bed");
-////        b.setDescription("A story about life");
-////        b.setCategory(new Category(1));
-////        b.setAuthor(new Author(1));
-////        b.setPublisher(new Publisher(1));
-////        b.setStatus(0);
-////        addNewBook(b);
-//
-////        for (Book book : getBooksByName("velit")) {
-////            System.out.println(book.toString());
-////        }
-////        
-////        for (Book book : getAllBooks()) {
-////            System.out.println(book.toString());
-////        }
-//    }
+        BookDB db = new BookDB();
+        Book b = new Book("Bua toi mot minh", "Chau Khai Phong", 1, 2, 3, 1);
+        
+//        Category c = new Category("laptop");
+//        Author a = new Author("thuan", "mydesc", "091824827", "thuan@gmail.com");
+//        Publisher p = new Publisher("Monster", "VietNam", "9273593874", "monstern@host.com");
+//        Status s = new Status("borrowed");
+//        
+//        b.setName("Change the world start off by making your bed");
+//        b.setDescription("A story about life");
+//        b.setCategory(new Category(1));
+//        b.setAuthor(new Author(1));
+//        b.setPublisher(new Publisher(1));
+//        b.setStatus(new Status(3));
+        
+        db.addNewBook(b);
+
+//        for (Book book : getBooksByName("velit")) {
+//            System.out.println(book.toString());
+//        }
+        
+//        for (Book book : getAllBooks()) {
+//            System.out.println(book.toString());
+//        }
+    }
 
     /**
      * Get all of the Books.
@@ -149,23 +157,22 @@ public class BookDB {
      * @param b
      * @return 
      */
-    public static boolean addNewBook(Book b) {
+    public void addNewBook(Book b) {
         try {
             Connection conn = DBConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO books VALUES(?,?,?,?,?,?");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO books (\"NAME\", DESCRIPTION, CATEGORY_ID, AUTHOR_ID, PUBLISHER_ID, STATUS_ID) VALUES(?,?,?,?,?,?)");
             
             ps.setString(1, b.getName());
             ps.setString(2, b.getDescription());
-            ps.setInt(3, b.getCategory().getId());
-            ps.setInt(4, b.getAuthor().getId());
-            ps.setInt(5, b.getPublisher().getId());
-            ps.setInt(6, b.getStatus().getId());
-            return ps.executeUpdate() > 0;
+            ps.setInt(3, b.getCategory_id());
+            ps.setInt(4, b.getAuthor_id());
+            ps.setInt(5, b.getPublisher_id());
+            ps.setInt(6, b.getStatus_id());
+            ps.executeUpdate();
             
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return false;
     }
     
     /**

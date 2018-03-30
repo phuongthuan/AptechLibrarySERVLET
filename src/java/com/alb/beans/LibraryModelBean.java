@@ -40,4 +40,8 @@ public class LibraryModelBean {
     public void deleteBook(int id) {
        new BookDB().deleteBook(id);
     }
+    
+    public void addBook(Book b) {
+        new BookDB().addNewBook(b);
+    }
 }

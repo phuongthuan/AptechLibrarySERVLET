@@ -43,6 +43,13 @@ public class Publisher {
         this.email = email;
     }
 
+    public Publisher(String name, String address, String phone, String email) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+    }
+    
     public Publisher(Integer id) {
         this.id = id;
     }

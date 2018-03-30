@@ -46,8 +46,14 @@ public class Author {
     public Author(Integer id) {
         this.id = id;
     }
-    
 
+    public Author(String name, String description, String phone, String email) {
+        this.name = name;
+        this.description = description;
+        this.phone = phone;
+        this.email = email;
+    }
+    
     public Author() {
     }
     

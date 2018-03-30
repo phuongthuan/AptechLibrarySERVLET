@@ -25,6 +25,10 @@ public class Book {
     private Integer id;
     private String name;
     private String description;
+    private Integer category_id;
+    private Integer author_id;
+    private Integer publisher_id;
+    private Integer status_id;
     
     private Category category;
     private Author author;
@@ -46,6 +50,7 @@ public class Book {
      * @param publisher_id 
      * @param status_id
      */
+    
     public Book(Integer id, String name, String description, Category category, Author author, Publisher publisher, Status status) {
         this.id = id;
         this.name = name;
@@ -64,9 +69,16 @@ public class Book {
         this.publisher = publisher;
         this.status = status;
     }
-    
-    
 
+    public Book(String name, String description, Integer category_id, Integer author_id, Integer publisher_id, Integer status_id) {
+        this.name = name;
+        this.description = description;
+        this.category_id = category_id;
+        this.author_id = author_id;
+        this.publisher_id = publisher_id;
+        this.status_id = status_id;
+    }
+    
     public Integer getId() {
         return id;
     }
@@ -123,6 +135,39 @@ public class Book {
         this.status = status;
     }
 
+    public Integer getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(Integer category_id) {
+        this.category_id = category_id;
+    }
+
+    public Integer getAuthor_id() {
+        return author_id;
+    }
+
+    public void setAuthor_id(Integer author_id) {
+        this.author_id = author_id;
+    }
+
+    public Integer getPublisher_id() {
+        return publisher_id;
+    }
+
+    public void setPublisher_id(Integer publisher_id) {
+        this.publisher_id = publisher_id;
+    }
+
+    public Integer getStatus_id() {
+        return status_id;
+    }
+
+    public void setStatus_id(Integer status_id) {
+        this.status_id = status_id;
+    }
+
+    
     @Override
     public String toString() {
         return "Book{" + "id=" + id + ", name=" + name + ", description=" + description + ", category=" + category + ", author=" + author + ", publisher=" + publisher + ", status=" + status + '}';
