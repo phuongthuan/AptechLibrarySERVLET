@@ -75,12 +75,18 @@ public class DeleteBookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-           
+        PrintWriter out = response.getWriter();
         LibraryModelBean bean = new LibraryModelBean();
         int bookId = Integer.parseInt(request.getParameter("bookId"));
-        bean.deleteBook(bookId);
-        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-        rd.forward(request, response);
+        
+        if (bean.deleteBook(bookId) == true) {
+            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+            rd.forward(request, response);
+            out.print("Delete successful!");
+        } else {
+            out.print("Delete failed!");
+        }
+        
     }
 
     /**
