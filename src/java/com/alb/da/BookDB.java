@@ -22,7 +22,7 @@ public class BookDB {
      * 
      * @return 
      */
-    public static List<Book> getAllBooks() {
+    public List<Book> getAllBooks() {
         try {
             List<Book> books = new ArrayList<>();
             
@@ -59,7 +59,7 @@ public class BookDB {
      * @param id
      * @return 
      */
-    public static Book getBookById(int id) {
+    public Book getBookById(int id) {
         try {
             Connection conn = DBConnection.getConnection();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM books WHERE id=?");
@@ -92,7 +92,7 @@ public class BookDB {
      * @param name
      * @return 
      */
-    public static List<Book> getBooksByName(String name) {
+    public List<Book> getBooksByName(String name) {
         try {
             List<Book> books = new ArrayList<Book>();
 

@@ -15,7 +15,8 @@
 
     </head>
     <body>
-        <h1>CREATE BOOK</h1>
+        <center>
+            <h1>CREATE BOOK</h1>
         
             <form action="CreateBookController" method="POST">
 
@@ -69,7 +70,6 @@
                         <td>
                             <select name="publisherId">
                                 <jsp:useBean id="publisherDb" class="com.alb.da.PublisherDB" scope="page"/>
-
                                 <c:forEach items="${publisherDb.allPublishers}" var="p">
                                     <option value="${p.id}">${p.name}</option>
                                 </c:forEach>
@@ -82,7 +82,6 @@
                         <td>
                             <select name="statusId">
                                 <jsp:useBean id="statusDb" class="com.alb.da.StatusDB" scope="page"/>
-
                                 <c:forEach items="${statusDb.allStatuses}" var="s">
                                     <option value="${s.id}">${s.name}</option>
                                 </c:forEach>
@@ -93,7 +92,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <button type="submit" style="color: blue">Add</button>
+                            <button type="submit" style="color: blue">Create</button>
                         </td>
                     </tr>
 
@@ -101,6 +100,7 @@
 
             </form>
                                 
-        <B><a href="index.jsp" style="color: red" >Home</a></B>
+        <B><a href="index.jsp" style="color: red" >Back to Home</a></B>
+        </center>
     </body>
 </html>

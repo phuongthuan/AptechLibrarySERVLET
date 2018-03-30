@@ -41,7 +41,7 @@ public class LibraryModelBean {
         return new BookDB().deleteBook(id);
     }
     
-    public void addBook(Book b) {
-        new BookDB().addNewBook(b);
+    public boolean addBook(Book b) {
+       return new BookDB().addNewBook(b);
     }
 }

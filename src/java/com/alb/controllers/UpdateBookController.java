@@ -5,11 +5,8 @@
  */
 package com.alb.controllers;
 
-import com.alb.beans.LibraryModelBean;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author PHUONGTHUAN
  */
-@WebServlet(name = "DeleteBookController", urlPatterns = {"/DeleteBookController"})
-public class DeleteBookController extends HttpServlet {
+@WebServlet(name = "UpdateBookController", urlPatterns = {"/UpdateBookController"})
+public class UpdateBookController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +37,10 @@ public class DeleteBookController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteBookController</title>");            
+            out.println("<title>Servlet UpdateBookController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteBookController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdateBookController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -77,16 +74,6 @@ public class DeleteBookController extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        PrintWriter out = response.getWriter();
-        LibraryModelBean bean = new LibraryModelBean();
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
-        
-        boolean isDeleted = bean.deleteBook(bookId);
-        if (isDeleted) {
-            response.sendRedirect("index.jsp");
-        } else {
-            out.println("Delete failed!");
-        }
         
     }
 

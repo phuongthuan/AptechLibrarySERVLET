@@ -86,11 +86,11 @@ public class CreateBookController extends HttpServlet {
         
         Book book = new Book(name, description, categoryId, authorId, publisherId, statusId);
         LibraryModelBean bean = new LibraryModelBean();
-        bean.addBook(book);
+        boolean isCreated = bean.addBook(book);
         
-        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-        rd.forward(request, response);
-        
+        if (isCreated) {
+            response.sendRedirect("index.jsp");
+        }
     }
 
     /**

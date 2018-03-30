@@ -13,11 +13,13 @@
         <title>Book Detail</title>
     </head>
     <body>
+    <center>
         <h1>Details ID ${sessionScope.bookId}</h1>
         <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="page"/>
 
         <c:out value="${controller.getBookById(sessionScope.bookId)}"></c:out><br />
         
         <a style="color: red" href="index.jsp">Home</a>
+    </center>
     </body>
 </html>
