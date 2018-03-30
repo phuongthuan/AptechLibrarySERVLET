@@ -3,19 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.alb.test;
+package com.alb.da;
 
-import com.alb.beans.LibraryModelBean;
+import com.alb.entities.*;
+import java.util.*;
+import org.junit.Test;
 
 /**
  *
  * @author PHUONGTHUAN
  */
-public class TestClass {
+public class BookDBTest {
     
-    public static void main(String[] args) {
-        LibraryModelBean bean = new LibraryModelBean();
+    @Test
+    public void it_should_return_allbook() {
+        
     }
-    
     
 }

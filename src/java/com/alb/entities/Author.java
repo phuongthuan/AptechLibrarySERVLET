@@ -11,12 +11,18 @@ package com.alb.entities;
  */
 public class Author {
     
+    public static final String ID="id";
+    public static final String NAME="name";
+    public static final String DESCRIPTION="description";
+    public static final String PHONE="phone";
+    public static final String EMAIL="email";
+    
     /**
      * Author fields.
      */
     private Integer id;
     private String name;
-    private String address;
+    private String description;
     private String phone;
     private String email;
 
@@ -25,17 +31,22 @@ public class Author {
      * 
      * @param id
      * @param name
-     * @param address
+     * @param description
      * @param phone
      * @param email 
      */
-    public Author(Integer id, String name, String address, String phone, String email) {
+    public Author(Integer id, String name, String description, String phone, String email) {
         this.id = id;
         this.name = name;
-        this.address = address;
+        this.description = description;
         this.phone = phone;
         this.email = email;
     }
+
+    public Author(Integer id) {
+        this.id = id;
+    }
+    
 
     public Author() {
     }
@@ -56,12 +67,12 @@ public class Author {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getPhone() {
@@ -82,6 +93,7 @@ public class Author {
 
     @Override
     public String toString() {
-        return "Author{" + "id=" + id + ", name=" + name + ", address=" + address + ", phone=" + phone + ", email=" + email + '}';
+        return "Author{" + "id=" + id + ", name=" + name + ", description=" + description + ", phone=" + phone + ", email=" + email + '}';
     }
+
 }

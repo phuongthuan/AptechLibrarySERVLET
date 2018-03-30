@@ -9,35 +9,26 @@ package com.alb.entities;
  *
  * @author PHUONGTHUAN
  */
-public class Category {
+public class Status {
     
     public static final String ID="id";
     public static final String NAME="name";
     
     /**
-     * Category fields.
+     * Status fields.
      */
     private Integer id;
     private String name;
 
-    /**
-     * Category constructor.
-     * 
-     * @param id
-     * @param name 
-     */
-    public Category(Integer id, String name) {
+    public Status(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Category(Integer id) {
-        this.id = id;
-    }
-
-    public Category() {
+    public Status() {
     }
     
+
     public Integer getId() {
         return id;
     }
@@ -56,6 +47,6 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" + "id=" + id + ", name=" + name + '}';
+        return "Status{" + "id=" + id + ", name=" + name + '}';
     }
 }

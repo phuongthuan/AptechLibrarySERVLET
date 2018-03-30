@@ -13,10 +13,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Library</title>
+        <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <h1>LIBRARY!!</h1>
-        <table style="border: solid black">
+        <table class="mytable">
             <tr>
                 <th>No</th>
                 <th><a style="text-decoration: none" href="book.jsp">Title</a></th>
@@ -28,15 +29,15 @@
                 <th>Option</th>
             </tr>
             <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="page"/>
-            <c:forEach items="${controller.listBook}" var="book" >
+            <c:forEach items="${controller.allBooks}" var="book" >
                 <tr>
                     <td>${book.id}</td>
                     <td>${book.name}</td>
                     <td>${book.description}</td>
-                    <td>${book.category_id}</td>
-                    <td>${book.author_id}</td>
-                    <td>${book.publisher_id}</td>
-                    <td>${book.status}</td>
+                    <td>${book.category.name}</td>
+                    <td>${book.author.name}</td>
+                    <td>${book.publisher.name}</td>
+                    <td>${book.status.name}</td>
                     <td>
                         <form method="POST" action="DeleteBookController">
                             <input type="submit" value="Delete">
@@ -44,12 +45,7 @@
                         </form>
                     </td>
                     
-                    <td>
-                        <form method="POST" action="ReadBookController">
-                            <input type="submit" value="Detail">
-                            <input type="hidden" name="bookId" value="${book.id}">
-                        </form>
-                    </td>
+                    <td><a style="text-decoration: none" href="bookdetail.jsp?id=${book.id}">Detail</a></td>
                 </tr>
             </c:forEach>
         </table>

@@ -76,11 +76,11 @@ public class DeleteBookController extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
            
-        LibraryModelBean bean = new LibraryModelBean();
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
-        bean.deleteBook(bookId);
-        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-        rd.forward(request, response);
+//        LibraryModelBean bean = new LibraryModelBean();
+//        int bookId = Integer.parseInt(request.getParameter("bookId"));
+//        bean.deleteBook(bookId);
+//        RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
+//        rd.forward(request, response);
     }
 
     /**

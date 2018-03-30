@@ -17,7 +17,7 @@ public class DBConnection {
     
     private static Connection connection;
     
-    public synchronized Connection getConnection() throws ClassNotFoundException, SQLException {
+    public static synchronized Connection getConnection() throws ClassNotFoundException, SQLException {
         if (connection == null) {
             Class.forName("org.apache.derby.jdbc.ClientDriver");
             

@@ -61,7 +61,17 @@ public class ReadBookController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+//        processRequest(request, response);
+
+        LibraryModelBean bean = new LibraryModelBean();
+        int bookId = Integer.parseInt(request.getParameter("bookId"));
+        bean.getBookById(bookId);
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("bookId", bookId);
+        
+        response.sendRedirect("/bookdetail.jsp");
+
     }
 
     /**
@@ -77,14 +87,6 @@ public class ReadBookController extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        LibraryModelBean bean = new LibraryModelBean();
-        int bookId = Integer.parseInt(request.getParameter("bookId"));
-        bean.getBookDetails(bookId);
-        
-        HttpSession session = request.getSession();
-        session.setAttribute("bookId", bookId);
-        
-        response.sendRedirect("bookdetail.jsp");
     }
 
     /**

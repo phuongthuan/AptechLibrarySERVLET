@@ -11,6 +11,12 @@ package com.alb.entities;
  */
 public class Publisher {
     
+    public static final String ID="id";
+    public static final String NAME="name";
+    public static final String ADDRESS="address";
+    public static final String PHONE="phone";
+    public static final String EMAIL="email";
+    
     /**
      * Publisher fields.
      */
@@ -35,6 +41,10 @@ public class Publisher {
         this.address = address;
         this.phone = phone;
         this.email = email;
+    }
+
+    public Publisher(Integer id) {
+        this.id = id;
     }
 
     public Publisher() {

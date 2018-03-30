@@ -5,41 +5,39 @@
  */
 package com.alb.da;
 
-import com.alb.entities.Author;
 import com.alb.entities.Category;
+import com.alb.entities.Status;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author PHUONGTHUAN
  */
-public class CategoryDB {
-    
+public class StatusDB {
     /**
-     * Get all of the Categories.
+     * Get all of the Statuses.
      * 
      * @return 
      */
-    public List<Category> getAllCategories() {
+    public List<Status> getAllStatuses() {
         try {
-            List<Category> lists = new ArrayList<>();
+            List<Status> lists = new ArrayList<>();
             
             Connection con = DBConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM categories");
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM statuses");
             ResultSet rs = preparedStatement.executeQuery();
             
+            
             while (rs.next()) {
-                Category c = new Category(); 
-                c.setId(rs.getInt(Category.ID));
-                c.setName(rs.getString(Category.NAME));
+                Status s = new Status();
+                s.setId(rs.getInt(Status.ID));
+                s.setName(rs.getString(Status.NAME));
                 
-                lists.add(c);
+                lists.add(s);
             }
            
             return lists;
@@ -51,29 +49,28 @@ public class CategoryDB {
     }
     
     /**
-     * Get Category by giving ID.
+     * Get Status by giving ID.
      * 
      * @param id
      * @return 
      */
-    public Category getCategoryById(int id) {
+    public Status getStatusById(int id) {
         try {
             Connection con = DBConnection.getConnection();
-            Category c = new Category();
-            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM categories WHERE id=?");
+            Status c = new Status();
+            PreparedStatement preparedStatement = con.prepareStatement("SELECT * FROM statuses WHERE id=?");
             preparedStatement.setInt(1, id);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                c.setId(rs.getInt(Category.ID));
-                c.setName(rs.getString(Category.NAME));
+                c.setId(rs.getInt(Status.ID));
+                c.setName(rs.getString(Status.NAME));
             }
-            
             return c;
+
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-    
 }

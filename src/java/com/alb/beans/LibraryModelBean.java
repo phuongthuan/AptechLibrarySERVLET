@@ -29,15 +29,15 @@ public class LibraryModelBean {
         return new BookDB().getBooksByName(keyword);
     }
     
-    public List getBookDetails(Integer id) {
-        return new BookDB().getBookDetails(id);
+    public Book getBookById(int id) {
+        return new BookDB().getBookById(id);
     }
     
-    public List getListBook() {
-        return new BookDB().getListbooks();
+    public List<Book> getAllBooks() {
+        return new BookDB().getAllBooks();
     }
     
-    public void deleteBook(Integer id) {
+    public void deleteBook(int id) {
        new BookDB().deleteBook(id);
     }
 }

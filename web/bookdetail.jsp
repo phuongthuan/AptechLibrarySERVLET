@@ -15,9 +15,9 @@
     <body>
         <h1>Details ID ${sessionScope.bookId}</h1>
         <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="page"/>
-        <c:forEach var="book" items="${controller.getBookDetails(2)}">
-            ${book.name}
-        </c:forEach>
+
+        <c:out value="${controller.getBookById(sessionScope.bookId)}"></c:out><br />
+        
         <a style="color: red" href="index.jsp">Home</a>
     </body>
 </html>
