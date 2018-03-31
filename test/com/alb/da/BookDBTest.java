@@ -17,7 +17,7 @@ public class BookDBTest {
     public static void main(String[] args) {
         
         BookDB db = new BookDB();
-        Book b = new Book("Bua toi mot minh", "Chau Khai Phong", 1, 2, 3, 1);
+//        Book b = new Book("Bua toi mot minh", "Chau Khai Phong", 1, 2, 3, 1);
         
 //        Category c = new Category("laptop");
 //        Author a = new Author("thuan", "mydesc", "091824827", "thuan@gmail.com");
@@ -31,7 +31,8 @@ public class BookDBTest {
 //        b.setPublisher(new Publisher(1));
 //        b.setStatus(new Status(3));
         
-        db.addNewBook(b);
+            db.updateBook("new update", "new des", 1, 1, 1, 1, 2);
+//        db.addNewBook(b);
 
 //        for (Book book : getBooksByName("velit")) {
 //            System.out.println(book.toString());
