@@ -23,6 +23,12 @@
         <br />
         
         <table class="mytable">
+            
+            <tr>
+                <td><b>Book ID</b></td>
+                <td><c:out value="${sessionScope.bookId}" /></th> 
+            </tr>
+            
             <tr>
                 <td><b>Book Name</b></td>
                 <td><c:out value="${controller.getBookById(sessionScope.bookId).name}" /></th> 
