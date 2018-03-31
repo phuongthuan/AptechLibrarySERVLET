@@ -149,6 +149,38 @@ public class BookDB {
     }
     
     /**
+     * Update a Book by giving ID.
+     * 
+     * @param name
+     * @param description
+     * @param category_id
+     * @param author_id
+     * @param publisher_id
+     * @param status_id
+     * @param bookId
+     * @return 
+     */
+    public boolean updateBook(String name, String description, int category_id, int author_id, int publisher_id, int status_id, int bookId) {
+        
+        try {
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("UPDATE books SET \"NAME\" = ?, DESCRIPTION = ?, CATEGORY_ID = ?, AUTHOR_ID = ?, PUBLISHER_ID = ?, STATUS_ID = ? WHERE ID = ?");
+            ps.setString(1, name);
+            ps.setString(2, description);
+            ps.setInt(3, category_id);
+            ps.setInt(4, author_id);
+            ps.setInt(5, publisher_id);
+            ps.setInt(6, status_id);
+            ps.setInt(7, bookId);
+            
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    /**
      * Delete a Book.
      * 
      * @param id
