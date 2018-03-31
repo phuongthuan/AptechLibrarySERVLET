@@ -21,14 +21,14 @@
             <b><a style="color: blue; text-decoration: none" href="addnewbook.jsp">New Book</a></b>
             <table class="mytable">
                 <tr>
-                    <th>No</th>
-                    <th><a style="text-decoration: none" href="book.jsp">Title</a></th>
-                    <th>Description</th>
-                    <th><a style="text-decoration: none" href="category.jsp">Category</a></th>
-                    <th><a style="text-decoration: none" href="author.jsp">Author</a></th>
-                    <th><a style="text-decoration: none" href="publisher.jsp">Publisher</a></th>
-                    <th>Status</th>
-                    <th>Option</th>
+                    <td><b>No</b></td>
+                    <td><b>Title</b></td>
+                    <td><b>Description</b></td>
+                    <td><b>Category</b></td>
+                    <td><b>Author</b></td>
+                    <td><b>Publisher</b></td>
+                    <td><b>Status</b></td>
+                    <td><b>Option</b></td>
                 </tr>
                 <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="request"/>
                 <c:forEach items="${controller.allBooks}" var="book" >
@@ -46,7 +46,16 @@
                                 <input type="hidden" name="bookId" value="${book.id}">
                             </form>
                         </td>
-                        <td><a style="text-decoration: none" href="bookdetail.jsp?id=${book.id}">Detail</a></td>
+                        
+                        <td>
+                            <form method="GET" action="ReadBookController">
+                                <input type="submit" value="Detail">
+                                <input type="hidden" name="bookId" value="${book.id}">
+                            </form>
+                        </td>
+                        
+                        
+                        <!--<td><a style="text-decoration: none" href="bookdetail.jsp?id=${book.id}">Detail</a></td>-->
                     </tr>
                 </c:forEach>
             </table>

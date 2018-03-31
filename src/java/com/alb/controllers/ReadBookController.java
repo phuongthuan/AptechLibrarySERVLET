@@ -63,18 +63,18 @@ public class ReadBookController extends HttpServlet {
             throws ServletException, IOException {
 //        processRequest(request, response);
 
-        String id = request.getParameter("id");
-        
         LibraryModelBean bean = new LibraryModelBean();
-        int bookId = Integer.parseInt(id);
+        int bookId = Integer.parseInt(request.getParameter("bookId"));
         bean.getBookById(bookId);
         
         HttpSession session = request.getSession();
         session.setAttribute("bookId", bookId);
         
+        response.sendRedirect("bookdetail.jsp?id=" + bookId);
+        
         //pass session to the page using requestDispatcher.
-        RequestDispatcher rd = request.getRequestDispatcher("/bookdetail.jsp");
-        rd.forward(request, response);
+//        RequestDispatcher rd = request.getRequestDispatcher("bookdetail.jsp?id=" + bookId);
+//        rd.forward(request, response);
 
     }
 

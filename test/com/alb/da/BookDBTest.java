@@ -31,7 +31,10 @@ public class BookDBTest {
 //        b.setPublisher(new Publisher(1));
 //        b.setStatus(new Status(3));
         
-            db.updateBook("new update", "new des", 1, 1, 1, 1, 2);
+//            db.updateBook("new update", "", 1, 1, 1, 1, 2);
+            System.out.println(db.getBooksByName("update"));
+            
+            
 //        db.addNewBook(b);
 
 //        for (Book book : getBooksByName("velit")) {

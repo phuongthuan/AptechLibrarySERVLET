@@ -17,15 +17,7 @@ import java.util.*;
  * @author PHUONGTHUAN
  */
 public class AuthorDB {
-    
-    public static void main(String[] args) {
-        AuthorDB a = new AuthorDB();
-        System.out.println(a.getAuthorById(2));
-        
-        for (Author author : a.getAllAuthors()) {
-            System.out.println(author.toString());
-        }
-    }
+
     /**
      * Get all of the Authors.
      * 
