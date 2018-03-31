@@ -17,7 +17,8 @@
     <body>
         <center>
             <h1>CREATE BOOK</h1>
-        
+            <B><a href="index.jsp" style="color: red" >Back to Home</a></B>
+
             <form action="CreateBookController" method="POST">
 
                 <table class="mytable">
@@ -100,7 +101,6 @@
 
             </form>
                                 
-        <B><a href="index.jsp" style="color: red" >Back to Home</a></B>
         </center>
     </body>
 </html>

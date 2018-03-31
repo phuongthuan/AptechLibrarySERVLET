@@ -3,7 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/test/com/alb/da/BookDBTest.java</file>
             <file>file:/E:/Coding/PG/Java/aptechlibrary/web/index.jsp</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/web/bookdetail.jsp</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/src/java/com/alb/controllers/UpdateBookController.java</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/web/addnewbook.jsp</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/src/java/com/alb/controllers/DeleteBookController.java</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/web/css/style.css</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/src/java/com/alb/controllers/ReadBookController.java</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/src/java/com/alb/da/AuthorDB.java</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/test/com/alb/da/AuthorDBTest.java</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/src/java/com/alb/da/BookDB.java</file>
+            <file>file:/E:/Coding/PG/Java/aptechlibrary/src/java/com/alb/beans/LibraryModelBean.java</file>
         </group>
     </open-files>
 </project-private>

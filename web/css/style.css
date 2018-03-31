@@ -10,7 +10,10 @@ and open the template in the editor.
 
 .mytable {
     border: solid black;
-    padding: 20px;
+    padding: 10px;
 }
 
+.mytable tr td {
+    padding:0 15px 0 15px;
+}
 

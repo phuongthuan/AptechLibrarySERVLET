@@ -21,10 +21,6 @@ public class LibraryModelBean {
         this.keyword = keyword;
     }
     
-    public List<Book> getBooks() {
-        return new BookDB().getAllBooks();
-    }
-    
     public List<Book> getBooksByName() {
         return new BookDB().getBooksByName(keyword);
     }
@@ -35,6 +31,10 @@ public class LibraryModelBean {
     
     public List<Book> getAllBooks() {
         return new BookDB().getAllBooks();
+    }
+    
+    public boolean updateBook(String name, String description, int category_id, int author_id, int publisher_id, int status_id, int bookId) {
+        return new BookDB().updateBook(name, description, category_id, author_id, publisher_id, status_id, bookId);
     }
     
     public boolean deleteBook(int id) {
