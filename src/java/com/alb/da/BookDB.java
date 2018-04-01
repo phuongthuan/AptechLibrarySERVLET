@@ -42,6 +42,9 @@ public class BookDB {
                 b.setPublisher(new PublisherDB().getPublisherById(rs.getInt(Book.PUBLISHER_ID)));
                 b.setStatus(new StatusDB().getStatusById(rs.getInt(Book.STATUS_ID)));
                 
+                b.setCreated_at(rs.getString(Book.CREATED_AT));
+                b.setUpdated_at(rs.getString(Book.UPDATED_AT));
+                
                 books.add(b);
             }
             
@@ -77,6 +80,9 @@ public class BookDB {
             b.setAuthor(new AuthorDB().getAuthorById(rs.getInt(Book.AUTHOR_ID)));
             b.setPublisher(new PublisherDB().getPublisherById(rs.getInt(Book.PUBLISHER_ID)));
             b.setStatus(new StatusDB().getStatusById(rs.getInt(Book.STATUS_ID)));
+            
+            b.setCreated_at(rs.getString(Book.CREATED_AT));
+            b.setUpdated_at(rs.getString(Book.UPDATED_AT));
             
             return b;
 

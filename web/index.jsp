@@ -23,29 +23,35 @@
                 <tr>
                     <td><b>No</b></td>
                     <td><b>Title</b></td>
-                    <td><b>Description</b></td>
                     <td><b>Category</b></td>
                     <td><b>Author</b></td>
                     <td><b>Publisher</b></td>
                     <td><b>Status</b></td>
-                    <td><b>Option</b></td>
+                    <td><b>Date Borrowed</b></td>
+                    <td><b>Date Returned</b></td>
+                    <td><b></b></td>
                 </tr>
                 <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="request"/>
                 <c:forEach items="${controller.allBooks}" var="book" >
                     <tr>
                         <td>${book.id}</td>
                         <td>${book.name}</td>
-                        <td>${book.description}</td>
                         <td>${book.category.name}</td>
                         <td>${book.author.name}</td>
                         <td>${book.publisher.name}</td>
-                        <td>${book.status.name}</td>
-                        <td>
-                            <form method="POST" action="DeleteBookController" onsubmit="return confirm('Are you sure want to delete?');">
-                                <input type="submit" value="Delete">
-                                <input type="hidden" name="bookId" value="${book.id}">
-                            </form>
-                        </td>
+                        <c:choose>
+                            <c:when test="${book.status.id == 1}">
+                                <td><b style="color: red">Borrowed</b></td>
+                            </c:when>
+                            <c:when test="${book.status.id == 2}">
+                                <td><b style="color: green">Returned</b></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td><b style="color: greenyellow">Available</b></td>
+                            </c:otherwise>
+                        </c:choose>
+                        <td>${book.created_at}</td>
+                        <td>${book.updated_at}</td>
                         
                         <td>
                             <form method="GET" action="ReadBookController">
@@ -54,6 +60,12 @@
                             </form>
                         </td>
                         
+                        <td>
+                            <form method="POST" action="DeleteBookController" onsubmit="return confirm('Are you sure want to delete?');">
+                                <input type="submit" value="Delete">
+                                <input type="hidden" name="bookId" value="${book.id}">
+                            </form>
+                        </td>
                         
                         <!--<td><a style="text-decoration: none" href="bookdetail.jsp?id=${book.id}">Detail</a></td>-->
                     </tr>

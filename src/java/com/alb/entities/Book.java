@@ -18,6 +18,8 @@ public class Book {
     public static final String AUTHOR_ID="author_id";
     public static final String PUBLISHER_ID="publisher_id";
     public static final String STATUS_ID="status_id";
+    public static final String CREATED_AT="created_at";
+    public static final String UPDATED_AT="updated_at";
     
     /**
      * Book fields.
@@ -35,6 +37,9 @@ public class Book {
     private Publisher publisher;
     private Status status;
     
+    private String created_at;
+    private String updated_at;
+    
     
     public Book() {
     }
@@ -49,9 +54,11 @@ public class Book {
      * @param author_id
      * @param publisher_id 
      * @param status_id
+     * @param created_at
+     * @param updated_at
      */
     
-    public Book(Integer id, String name, String description, Category category, Author author, Publisher publisher, Status status) {
+    public Book(Integer id, String name, String description, Category category, Author author, Publisher publisher, Status status, String created_at, String updated_at) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -59,7 +66,10 @@ public class Book {
         this.author = author;
         this.publisher = publisher;
         this.status = status;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
+
 
     public Book(String name, String description, Integer category_id, Integer author_id, Integer publisher_id, Integer status_id) {
         this.name = name;
@@ -68,6 +78,22 @@ public class Book {
         this.author_id = author_id;
         this.publisher_id = publisher_id;
         this.status_id = status_id;
+    }
+    
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
     }
     
     public Integer getId() {
@@ -158,9 +184,8 @@ public class Book {
         this.status_id = status_id;
     }
 
-    
     @Override
     public String toString() {
-        return "Book{" + "id=" + id + ", name=" + name + ", description=" + description + ", category=" + category + ", author=" + author + ", publisher=" + publisher + ", status=" + status + '}';
+        return "Book{" + "id=" + id + ", name=" + name + ", description=" + description + ", category_id=" + category_id + ", author_id=" + author_id + ", publisher_id=" + publisher_id + ", status_id=" + status_id + ", category=" + category + ", author=" + author + ", publisher=" + publisher + ", status=" + status + ", created_at=" + created_at + ", updated_at=" + updated_at + '}';
     }
 }

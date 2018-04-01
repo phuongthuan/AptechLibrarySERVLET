@@ -38,7 +38,7 @@
                     <tr>
                         <td>Description</td>
                         <td>
-                            <input type="text" name="description" required/>
+                            <textarea name="description" rows="5" cols="22"></textarea>
                         </td>
                     </tr>
 
