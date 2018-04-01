@@ -19,9 +19,8 @@ public class DBConnection {
     
     public static synchronized Connection getConnection() throws ClassNotFoundException, SQLException {
         if (connection == null) {
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            
-            connection = DriverManager.getConnection("jdbc:derby://localhost:1527/library", "sa", "sa");
+            Class.forName("com.mysql.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/library", "root", "");
         }
         return connection;
     }
