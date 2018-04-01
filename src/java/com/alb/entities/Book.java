@@ -61,15 +61,6 @@ public class Book {
         this.status = status;
     }
 
-    public Book(String name, String description, Category category, Author author, Publisher publisher, Status status) {
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.author = author;
-        this.publisher = publisher;
-        this.status = status;
-    }
-
     public Book(String name, String description, Integer category_id, Integer author_id, Integer publisher_id, Integer status_id) {
         this.name = name;
         this.description = description;

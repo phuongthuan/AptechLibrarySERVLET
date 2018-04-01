@@ -132,7 +132,7 @@ public class BookDB {
     public boolean addNewBook(Book b) {
         try {
             Connection conn = DBConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement("INSERT INTO books (\"NAME\", DESCRIPTION, CATEGORY_ID, AUTHOR_ID, PUBLISHER_ID, STATUS_ID) VALUES(?,?,?,?,?,?)");
+            PreparedStatement ps = conn.prepareStatement("INSERT INTO books (name, description, category_id, author_id, publisher_id, status_id) VALUES(?,?,?,?,?,?)");
             
             ps.setString(1, b.getName());
             ps.setString(2, b.getDescription());
@@ -164,7 +164,7 @@ public class BookDB {
         
         try {
             Connection conn = DBConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement("UPDATE books SET \"NAME\" = ?, DESCRIPTION = ?, CATEGORY_ID = ?, AUTHOR_ID = ?, PUBLISHER_ID = ?, STATUS_ID = ? WHERE ID = ?");
+            PreparedStatement ps = conn.prepareStatement("UPDATE books SET name = ?, description = ?, category_id = ?, author_id = ?, publisher_id = ?, status_id = ? WHERE id = ?");
             ps.setString(1, name);
             ps.setString(2, description);
             ps.setInt(3, category_id);

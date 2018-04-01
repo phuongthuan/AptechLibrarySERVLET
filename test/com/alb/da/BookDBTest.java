@@ -32,7 +32,7 @@ public class BookDBTest {
 //        b.setStatus(new Status(3));
         
 //            db.updateBook("new update", "", 1, 1, 1, 1, 2);
-            System.out.println(db.getBooksByName("update"));
+            System.out.println(db.getBooksByName("new"));
             
             
 //        db.addNewBook(b);
