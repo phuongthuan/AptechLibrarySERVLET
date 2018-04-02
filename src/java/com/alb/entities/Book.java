@@ -70,7 +70,16 @@ public class Book {
         this.updated_at = updated_at;
     }
 
-
+    public Book(String name, String description, Integer category_id, Integer author_id, Integer publisher_id, Integer status_id, int bookId) {
+        this.name = name;
+        this.description = description;
+        this.category_id = category_id;
+        this.author_id = author_id;
+        this.publisher_id = publisher_id;
+        this.status_id = status_id;
+        this.id = bookId;
+    }
+    
     public Book(String name, String description, Integer category_id, Integer author_id, Integer publisher_id, Integer status_id) {
         this.name = name;
         this.description = description;

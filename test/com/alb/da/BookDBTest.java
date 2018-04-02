@@ -31,8 +31,8 @@ public class BookDBTest {
 //        b.setPublisher(new Publisher(1));
 //        b.setStatus(new Status(3));
         
-//            db.updateBook("new update", "", 1, 1, 1, 1, 2);
-            System.out.println(db.getBooksByName("new"));
+            db.updateBook("new update", "", 1, 1, 1, 1, 4);
+//            System.out.println(db.getBooksByName("new"));
             
             
 //        db.addNewBook(b);
