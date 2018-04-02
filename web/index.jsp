@@ -18,6 +18,7 @@
     <body>
         <center>
             <h1>APTECH LIBRARY!!</h1>
+            <h4>Welcome ${sessionScope.username}</h4>
             <b><a style="color: blue; text-decoration: none" href="addnewbook.jsp">New Book</a></b>
             <table class="mytable">
                 <tr>
