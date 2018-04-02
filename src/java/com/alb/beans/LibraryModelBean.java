@@ -21,6 +21,10 @@ public class LibraryModelBean {
         this.keyword = keyword;
     }
     
+    public boolean login(String username, String password) {
+        return new UserDB().checkUser(username, password);
+    }
+    
     public List<Book> getBooksByName() {
         return new BookDB().getBooksByName(keyword);
     }

@@ -6,9 +6,9 @@
 package com.alb.controllers;
 
 import com.alb.beans.LibraryModelBean;
-import com.alb.entities.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +20,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author PHUONGTHUAN
  */
-@WebServlet(name = "UpdateBookController", urlPatterns = {"/UpdateBookController"})
-public class UpdateBookController extends HttpServlet {
+@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
+public class LoginController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class UpdateBookController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UpdateBookController</title>");            
+            out.println("<title>Servlet LoginController</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UpdateBookController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -76,27 +76,24 @@ public class UpdateBookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-        
-        HttpSession session = request.getSession(false);
-        
-        int bookId = (Integer) session.getAttribute("bookId");
-        
-        String name = request.getParameter("name");
-        String description = request.getParameter("description");
-        
-        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-        int authorId = Integer.parseInt(request.getParameter("authorId"));
-        int publisherId = Integer.parseInt(request.getParameter("publisherId"));
-        int statusId = Integer.parseInt(request.getParameter("statusId"));
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         
         LibraryModelBean bean = new LibraryModelBean();
-        boolean isUpdated = bean.updateBook(name, description, categoryId, authorId, publisherId, statusId, bookId);
         
-        if (isUpdated) {
+        if (bean.login(username, password)) {
+            HttpSession session = request.getSession();
+            bean.login(username, password);
+            session.setAttribute("username", username);
             response.sendRedirect("index.jsp");
+            
+        } else {
+            response.sendRedirect("loginerror.jsp");
         }
     }
 
+    
     /**
      * Returns a short description of the servlet.
      *
