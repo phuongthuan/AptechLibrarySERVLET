@@ -5,6 +5,8 @@
  */
 package com.alb.controllers;
 
+import com.alb.beans.LibraryModelBean;
+import com.alb.entities.Book;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -73,8 +76,24 @@ public class UpdateBookController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 //        processRequest(request, response);
-
         
+        HttpSession session = request.getSession(false);
+        
+        int bookId = (Integer) session.getAttribute("bookId");
+        
+        String name = request.getParameter("name");
+        String description = request.getParameter("description");
+        int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+        int authorId = Integer.parseInt(request.getParameter("authorId"));
+        int publisherId = Integer.parseInt(request.getParameter("publisherId"));
+        int statusId = Integer.parseInt(request.getParameter("statusId"));
+        
+        LibraryModelBean bean = new LibraryModelBean();
+        boolean isUpdated = bean.updateBook(name, description, categoryId, authorId, publisherId, statusId, bookId);
+        
+        if (isUpdated) {
+            response.sendRedirect("index.jsp");
+        }
     }
 
     /**
