@@ -7,6 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:if test="${sessionScope.username==null}">
+    <jsp:forward page="login.jsp"></jsp:forward>
+</c:if>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,12 +21,15 @@
     <center>
         <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="page"/>
 
-        <h1>Book Details</h1>
         <a style="color: red" href="index.jsp">Home</a>
-        <br />
 
         <form action="UpdateBookController" method="POST">
         <table class="mytable">
+
+            <tr>
+                <td></td>
+                <td><h2>Details</h2></td>
+            </tr>
 
             <tr>
                 <td><b></b></td>
