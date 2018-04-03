@@ -9,6 +9,9 @@
 <%@page import="com.alb.entities.*" %>
 <%@page import="com.alb.beans.*" %>
 <!DOCTYPE html>
+<c:if test="${sessionScope.username==null}">
+    <jsp:forward page="login.jsp"></jsp:forward>
+</c:if>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -18,7 +21,8 @@
     <body>
         <center>
             <h1>APTECH LIBRARY!!</h1>
-            <h4>Welcome ${sessionScope.username}</h4>
+            <p>Welcome, <b>${sessionScope.username}</b>   <a href="LogoutController">Logout</a></p>
+            
             <b><a style="color: blue; text-decoration: none" href="addnewbook.jsp">New Book</a></b>
             <table class="mytable">
                 <tr>
@@ -59,6 +63,8 @@
                                 <input type="submit" value="Detail">
                                 <input type="hidden" name="bookId" value="${book.id}">
                             </form>
+
+                            <!--<a href="ReadBookController">Detail</a>-->
                         </td>
                         
                         <td>

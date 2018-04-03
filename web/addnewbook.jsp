@@ -7,6 +7,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib  prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<c:if test="${sessionScope.username==null}">
+    <jsp:forward page="login.jsp"></jsp:forward>
+</c:if>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,16 +19,15 @@
     </head>
     <body>
         <center>
-            <h1>CREATE BOOK</h1>
-            <B><a href="index.jsp" style="color: red" >Back to Home</a></B>
+            <B><a href="index.jsp" style="color: red" >Home</a></B>
 
             <form action="CreateBookController" method="POST">
 
                 <table class="mytable">
 
                     <tr>
-                        <th>Information</th>
-                        <th></th> 
+                        <td></td>
+                        <td><h2>Insert</h2></td>
                     </tr>
 
                     <tr>
