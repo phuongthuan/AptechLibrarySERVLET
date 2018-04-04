@@ -1,6 +1,6 @@
 <%-- 
-    Document   : index
-    Created on : Mar 29, 2018, 6:22:40 PM
+    Document   : result
+    Created on : Apr 4, 2018, 10:28:28 PM
     Author     : PHUONGTHUAN
 --%>
 
@@ -12,7 +12,6 @@
 
 <fmt:setLocale value="${language}" />
 <fmt:setBundle basename="com.alb.i18n.language" />
-
 <!DOCTYPE html>
 <c:if test="${sessionScope.username==null}">
     <jsp:forward page="login.jsp"></jsp:forward>
@@ -20,27 +19,13 @@
 <html lang="${language}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Library</title>
+        <title>Result Search</title>
         <link rel="stylesheet" href="css/style.css" />
     </head>
     <body>
         <center>
-            <h1>APTECH LIBRARY!!</h1>
-            <p>
-                Welcome, <b>${sessionScope.username}</b>
-                <a href="LogoutController">
-                Logout</a>
-            </p>
-            
-            <form action="BookFinder">
-                <input placeholder="Enter name or ID of Book" name="name" />
-                <input type="submit" value="Search" /><br/>
-                <span style="color: red">
-                    <c:out value="${param.msg}"></c:out>
-                </span>
-            </form>
-            
-            <b><a style="color: blue; text-decoration: none" href="addnewbook.jsp">New Book</a></b>
+            <h1>Result Search</h1>
+
             <table class="mytable">
                 <tr>
                     <td><b><label for="no"><fmt:message key="index.label.no" /></label></b></td>
@@ -53,8 +38,8 @@
                     <td><b><label for="updated"><fmt:message key="index.label.updated" /></label></b></td>
                     <td><b></b></td>
                 </tr>
-                <jsp:useBean id="controller" class="com.alb.beans.LibraryModelBean" scope="request"/>
-                <c:forEach items="${controller.allBooks}" var="book" >
+                <jsp:useBean id="finder" class="com.alb.beans.LibraryModelBean" scope="request"/>
+                <c:forEach items="${finder.booksByName}" var="book" >
                     <tr>
                         <td>${book.id}</td>
                         <td>${book.name}</td>
@@ -83,15 +68,6 @@
                             </form>
                         </td>
                         
-                        <td>
-                            <form method="POST" action="DeleteBookController" onsubmit="return confirm('Are you sure want to delete?');">
-                                <fmt:message key="index.button.delete" var="deleteButton" />
-                                <input type="submit" name="delete" value="${deleteButton}">
-                                <input type="hidden" name="bookId" value="${book.id}">
-                            </form>
-                        </td>
-                        
-                        <!--<td><a style="text-decoration: none" href="bookdetail.jsp?id=${book.id}">Detail</a></td>-->
                     </tr>
                 </c:forEach>
             </table>

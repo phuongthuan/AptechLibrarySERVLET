@@ -6,11 +6,16 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<fmt:setLocale value="${language}" />
+<fmt:setBundle basename="com.alb.i18n.language" />
 <!DOCTYPE html>
 <c:if test="${sessionScope.username==null}">
     <jsp:forward page="login.jsp"></jsp:forward>
 </c:if>
-<html>
+<html lang="${language}">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="css/style.css" />
@@ -37,36 +42,36 @@
             </tr>
 
             <tr>
-                <td><b>Book Name</b></td>
+                <td><b><label for="name"><fmt:message key="index.label.name" /></label></b></td>
                 <td><input name="name" value="${controller.getBookById(sessionScope.bookId).name}" required/></td>
             </tr>
             
             <tr>
-                <td><b>Description</b></td>
+                <td><b><label for="description"><fmt:message key="index.label.description" /></label></b></td>
                 <td>
                     <textarea rows="5" cols="22" name="description">${controller.getBookById(sessionScope.bookId).description}</textarea>
                 </td> 
             </tr>
             <tr>
-                <td><b>Category</b></td>
+                <td><b><label for="category"><fmt:message key="index.label.category" /></label></b></td>
                 <td><c:out value="${controller.getBookById(sessionScope.bookId).category.name}" /></td> 
                 <td><input type="hidden" name="categoryId" value="${controller.getBookById(sessionScope.bookId).category.id}" /></td> 
             </tr>
 
             <tr>
-                <td><b>Author</b></td>
+                <td><b><label for="author"><fmt:message key="index.label.author" /></label></b></td>
                 <td><c:out value="${controller.getBookById(sessionScope.bookId).author.name}" /></td> 
                 <td><input type="hidden" name="authorId" value="${controller.getBookById(sessionScope.bookId).author.id}" /></td> 
             </tr>
 
             <tr>
-                <td><b>Publisher</b></td>
+                <td><b><label for="publisher"><fmt:message key="index.label.publisher" /></label></b></td>
                 <td><c:out value="${controller.getBookById(sessionScope.bookId).publisher.name}" /></td> 
                 <td><input type="hidden" name="publisherId" value="${controller.getBookById(sessionScope.bookId).publisher.id}" /></td> 
             </tr>
 
             <tr>
-                <td><b>Status</b></td>
+                <td><b><label for="status"><fmt:message key="index.label.status" /></label></b></td>
 <!--                
                 <c:choose>
                     <c:when test="${controller.getBookById(sessionScope.bookId).status.id == 1}">
@@ -94,12 +99,12 @@
             </tr>
 
             <tr>
-                <td><b>Date Borrowed</b></td>
+                <td><b><label for="created"><fmt:message key="index.label.created" /></label></b></td>
                 <td><c:out value="${controller.getBookById(sessionScope.bookId).created_at}" /></td> 
             </tr>
 
             <tr>
-                <td><b>Date Returned</b></td>
+                <td><b><label for="updated"><fmt:message key="index.label.updated" /></label></b></td>
                 <td><c:out value="${controller.getBookById(sessionScope.bookId).updated_at}" /></td> 
             </tr>
             
