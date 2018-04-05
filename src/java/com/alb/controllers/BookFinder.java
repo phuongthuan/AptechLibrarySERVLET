@@ -34,15 +34,17 @@ public class BookFinder extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String keyword = request.getParameter("name");
-        
-        if (keyword == null|| keyword.trim().isEmpty()) {
-            response.sendRedirect("index.jsp?msg=Please enter keyword!!!");
+        String value = request.getParameter("name");
+        int option = Integer.parseInt(request.getParameter("statusId"));
+        LibraryModelBean bean = new LibraryModelBean();
+
+        if (value == null || value.trim().isEmpty()) {
+            bean.setOption(option);
+            request.setAttribute("finder", bean);
             return;
         }
-        LibraryModelBean bean = new LibraryModelBean();
-        bean.setKeyword(keyword);
         
+        bean.setKeyword(value);
         request.setAttribute("finder", bean);
         
         RequestDispatcher rd = request.getRequestDispatcher("result.jsp");

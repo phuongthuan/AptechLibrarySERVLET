@@ -70,6 +70,38 @@
                         
                     </tr>
                 </c:forEach>
+                    
+                <c:forEach items="${finder.booksByStatus}" var="book" >
+                    <tr>
+                        <td>${book.id}</td>
+                        <td>${book.name}</td>
+                        <td>${book.category.name}</td>
+                        <td>${book.author.name}</td>
+                        <td>${book.publisher.name}</td>
+                        <c:choose>
+                            <c:when test="${book.status.id == 1}">
+                                <td><b style="color: red">Borrowed</b></td>
+                            </c:when>
+                            <c:when test="${book.status.id == 2}">
+                                <td><b style="color: green">Returned</b></td>
+                            </c:when>
+                            <c:otherwise>
+                                <td><b style="color: greenyellow">Available</b></td>
+                            </c:otherwise>
+                        </c:choose>
+                        <td>${book.created_at}</td>
+                        <td>${book.updated_at}</td>
+                        
+                        <td>
+                            <form method="GET" action="ReadBookController">
+                                <fmt:message key="index.button.detail" var="detailButton" />
+                                <input type="submit" name="detail" value="${detailButton}">
+                                <input type="hidden" name="bookId" value="${book.id}">
+                            </form>
+                        </td>
+                        
+                    </tr>
+                </c:forEach>
             </table>
         </center>
     </body>

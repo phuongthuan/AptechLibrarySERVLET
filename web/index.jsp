@@ -28,19 +28,53 @@
             <h1>APTECH LIBRARY!!</h1>
             <p>
                 Welcome, <b>${sessionScope.username}</b>
-                <a href="LogoutController">
-                Logout</a>
+                <a href="LogoutController">Logout</a>
+                <a href="history.jsp">History</a>
             </p>
             
-            <form action="BookFinder">
+            <b><a style="color: blue; text-decoration: none" href="addnewbook.jsp">New Book</a></b>
+            <b><a style="color: blue; text-decoration: none" href="history.jsp">History</a></b>
+            
+<!--            <form action="BookFinder">
                 <input placeholder="Enter name or ID of Book" name="name" />
                 <input type="submit" value="Search" /><br/>
                 <span style="color: red">
                     <c:out value="${param.msg}"></c:out>
                 </span>
+            </form>-->
+                
+            <form action="BookFinder">
+                <table>
+                    <tr>
+                        <th align="center" colspan="3"><h3>Search Book</h3></th>
+                    </tr>
+                    <tr>
+                        <td>Search Value</td>
+                        <td><input placeholder="Enter name or description.." name="name" type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td>Search By</td>
+                        <td>
+                            <select name="statusId">
+                                <jsp:useBean id="statusDb" class="com.alb.da.StatusDB" scope="page"/>
+                                <c:forEach items="${statusDb.allStatuses}" var="s">
+                                    <option value="${s.id}">${s.name}</option>
+                                </c:forEach>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" value="Search"></td>
+                    </tr>
+                </table>
+                                
+                <span style="color: red">
+                    <c:out value="${param.msg}"></c:out>
+                </span>
             </form>
             
-            <b><a style="color: blue; text-decoration: none" href="addnewbook.jsp">New Book</a></b>
+
             <table class="mytable">
                 <tr>
                     <td><b><label for="no"><fmt:message key="index.label.no" /></label></b></td>
