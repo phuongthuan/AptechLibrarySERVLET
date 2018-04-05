@@ -65,27 +65,28 @@ public class BookDB {
     public Book getBookById(int id) {
         try {
             Connection conn = DBConnection.getConnection();
+            Book b = new Book();
             PreparedStatement ps = conn.prepareStatement("SELECT * FROM books WHERE id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             
-            Book b = new Book();
-            rs.next();
             
-            b.setId(rs.getInt(Book.ID));
-            b.setName(rs.getString(Book.NAME));
-            b.setDescription(rs.getString(Book.DESCRIPTION));
+            while (rs.next()) {
+            
+                b.setId(rs.getInt(Book.ID));
+                b.setName(rs.getString(Book.NAME));
+                b.setDescription(rs.getString(Book.DESCRIPTION));
 
-            b.setCategory(new CategoryDB().getCategoryById(rs.getInt(Book.CATEGORY_ID)));
-            b.setAuthor(new AuthorDB().getAuthorById(rs.getInt(Book.AUTHOR_ID)));
-            b.setPublisher(new PublisherDB().getPublisherById(rs.getInt(Book.PUBLISHER_ID)));
-            b.setStatus(new StatusDB().getStatusById(rs.getInt(Book.STATUS_ID)));
-            
-            b.setCreated_at(rs.getString(Book.CREATED_AT));
-            b.setUpdated_at(rs.getString(Book.UPDATED_AT));
-            
+                b.setCategory(new CategoryDB().getCategoryById(rs.getInt(Book.CATEGORY_ID)));
+                b.setAuthor(new AuthorDB().getAuthorById(rs.getInt(Book.AUTHOR_ID)));
+                b.setPublisher(new PublisherDB().getPublisherById(rs.getInt(Book.PUBLISHER_ID)));
+                b.setStatus(new StatusDB().getStatusById(rs.getInt(Book.STATUS_ID)));
+
+                b.setCreated_at(rs.getString(Book.CREATED_AT));
+                b.setUpdated_at(rs.getString(Book.UPDATED_AT));
+            }
             return b;
-
+            
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -98,13 +99,14 @@ public class BookDB {
      * @param name
      * @return 
      */
-    public List<Book> getBooksByName(String name) {
+    public List<Book> findBooksByName(String value) {
         try {
             List<Book> books = new ArrayList<Book>();
 
             Connection conn = DBConnection.getConnection();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM books WHERE name like ?");
-            ps.setString(1, "%"+name+"%");
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM books WHERE name like ? OR description like ?");
+            ps.setString(1, "%"+value+"%");
+            ps.setString(2, "%"+value+"%");
             
             ResultSet rs = ps.executeQuery();
             Book b = new Book();
@@ -131,6 +133,47 @@ public class BookDB {
             return null;
         }
     }
+    /**
+     * Get Book by giving status.
+     * 
+     * @param name
+     * @return 
+     */
+    public List<Book> findBooksByStatus(int status) {
+        try {
+            List<Book> books = new ArrayList<Book>();
+
+            Connection conn = DBConnection.getConnection();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM books WHERE status_id=?");
+            ps.setInt(1, status);
+            
+            ResultSet rs = ps.executeQuery();
+            Book b = new Book();
+            
+            while(rs.next()) {
+                b.setId(rs.getInt(Book.ID));
+                b.setName(rs.getString(Book.NAME));
+                b.setDescription(rs.getString(Book.DESCRIPTION));
+                b.setCategory(new CategoryDB().getCategoryById(rs.getInt(Book.CATEGORY_ID)));
+                b.setAuthor(new AuthorDB().getAuthorById(rs.getInt(Book.AUTHOR_ID)));
+                b.setPublisher(new PublisherDB().getPublisherById(rs.getInt(Book.PUBLISHER_ID)));
+                b.setStatus(new StatusDB().getStatusById(rs.getInt(Book.STATUS_ID)));
+                
+                b.setCreated_at(rs.getString(Book.CREATED_AT));
+                b.setUpdated_at(rs.getString(Book.UPDATED_AT));
+                
+                books.add(b);
+            }
+
+            return books;
+           
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
+    
 
     /**
      * Add a New Book.

@@ -16,9 +16,14 @@ import java.util.*;
 public class LibraryModelBean {
     
     private String keyword;
+    private int option;
     
     public void setKeyword(String keyword) {
         this.keyword = keyword;
+    }
+
+    public void setOption(int option) {
+        this.option = option;
     }
     
     public boolean login(String username, String password) {
@@ -26,15 +31,27 @@ public class LibraryModelBean {
     }
     
     public List<Book> getBooksByName() {
-        return new BookDB().getBooksByName(keyword);
+        return new BookDB().findBooksByName(keyword);
+    }
+    
+    public List<Book> getBooksByStatus() {
+        return new BookDB().findBooksByStatus(option);
+    }
+    
+    public List<Book> getAllBooks() {
+        return new BookDB().getAllBooks();
     }
     
     public Book getBookById(int id) {
         return new BookDB().getBookById(id);
     }
     
-    public List<Book> getAllBooks() {
-        return new BookDB().getAllBooks();
+    public History getHistoryById(int id) {
+        return new HistoryDB().getHistoryById(id);
+    }
+    
+    public List<History> getAllHistories() {
+        return new HistoryDB().getAllHistories();
     }
     
     public boolean updateBook(String name, String description, int category_id, int author_id, int publisher_id, int status_id, int bookId) {
